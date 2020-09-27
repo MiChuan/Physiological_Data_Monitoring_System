@@ -164,13 +164,13 @@ public class SensorSimulate {
         System.out.println(h);
         System.out.println(b);
 
-        t.setMode(t.normal);
+        t.setMode(t.feverT);
         double temperature = t.getTemperature();
         int precimal = 1;
         temperature = new BigDecimal(temperature).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
         System.out.println("temperature: " + temperature);
 
-        h.setMode(h.normal);
+        h.setMode(h.quickRate);
         int heartRate = h.getBPM();
         System.out.println("heartRate: " + heartRate);
 
