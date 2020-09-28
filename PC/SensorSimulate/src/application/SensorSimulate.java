@@ -2,7 +2,10 @@ package application;
 
 import java.math.BigDecimal;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
+import static java.lang.Thread.sleep;
 import static java.math.BigDecimal.ROUND_HALF_DOWN;
 
 class TemperatureSensor {
@@ -185,7 +188,7 @@ class BloodPressureSensor {
     }
 }
 
-public class SensorSimulate {
+public class SensorSimulate{
     private TemperatureSensor t;
     private HeartRateSensor h;
     private BloodPressureSensor b;
@@ -234,11 +237,12 @@ public class SensorSimulate {
         return physiologicalData;
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws InterruptedException {
         SensorSimulate sensor = SensorSimulate.getInstance();
         System.out.println(sensor);
         for(int count = 10; count > 0; --count) {
             System.out.println(sensor.generateData());
+            sleep(5000);
         }
 
         /*
