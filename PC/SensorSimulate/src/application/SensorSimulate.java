@@ -15,10 +15,20 @@ class TemperatureSensor {
     private final double lowV = 911.880;
     private final double highV = 880.630;
 
-    public TemperatureSensor() {
+    /**
+     * 采用饿汉式单例模式创建传感器实例
+     * */
+    private static final TemperatureSensor temperatureSensor = new TemperatureSensor();
+
+    private TemperatureSensor() {
         this.mode = 0;
         this.voltage = 0;
         this.temperature = 0;
+    }
+
+    //静态工厂方法
+    public static TemperatureSensor getInstance() {
+        return temperatureSensor;
     }
 
     public void setMode(int mode) {
@@ -61,10 +71,20 @@ class HeartRateSensor {
     private final double lowH = 1;
     private final double highH = 0.6;
 
-    public HeartRateSensor() {
+    /**
+     * 采用饿汉式单例模式创建传感器实例
+     * */
+    private static final HeartRateSensor heartRateSensor = new HeartRateSensor();
+
+    private HeartRateSensor() {
         this.BPM = 0;
         this.IBI = 0;
         this.mode = 0;
+    }
+
+    //静态工厂方法
+    public static HeartRateSensor getInstance() {
+        return heartRateSensor;
     }
 
     public void setMode(int mode) {
@@ -109,12 +129,22 @@ class BloodPressureSensor {
     private final double highDBP = 11.9;
     private final double highPressureDBP = 20;
 
-    public BloodPressureSensor() {
+    /**
+     * 采用饿汉式单例模式创建传感器实例
+     * */
+    private static final BloodPressureSensor bloodPressureSensor = new BloodPressureSensor();
+
+    private BloodPressureSensor() {
         this.SBP = 0;
         this.DBP = 0;
         this.SBP_Hg = 0;
         this.DBP_Hg = 0;
         this.mode = 0;
+    }
+
+    //静态工厂方法
+    public static BloodPressureSensor getInstance() {
+        return bloodPressureSensor;
     }
 
     public void setMode(int mode) {
@@ -156,30 +186,69 @@ class BloodPressureSensor {
 }
 
 public class SensorSimulate {
-    public static void main(String args[]){
-        TemperatureSensor t = new TemperatureSensor();
-        HeartRateSensor h = new HeartRateSensor();
-        BloodPressureSensor b = new BloodPressureSensor();
-        System.out.println(t);
-        System.out.println(h);
-        System.out.println(b);
+    private TemperatureSensor t;
+    private HeartRateSensor h;
+    private BloodPressureSensor b;
 
-        t.setMode(t.feverT);
+    /**
+     * 采用饿汉式单例模式创建传感器模拟器实例
+     * */
+    private static final SensorSimulate sensorSimulate = new SensorSimulate();
+
+    private SensorSimulate() {
+        this.t = TemperatureSensor.getInstance();
+        this.h = HeartRateSensor.getInstance();
+        this.b = BloodPressureSensor.getInstance();
+    }
+
+    //静态工厂方法
+    public static SensorSimulate getInstance() {
+        return sensorSimulate;
+    }
+
+    @Override
+    public String toString() {//模拟器描述
+        return this.t + "\n" + this.h + "\n" + this.b + "\n";
+    }
+
+    public String generateData(){
+        String physiologicalData  = "";
+
+        t.setMode(t.normal);
         double temperature = t.getTemperature();
         int precimal = 1;
         temperature = new BigDecimal(temperature).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
-        System.out.println("temperature: " + temperature);
+        physiologicalData += temperature;
 
-        h.setMode(h.quickRate);
+        h.setMode(h.normal);
         int heartRate = h.getBPM();
-        System.out.println("heartRate: " + heartRate);
+        physiologicalData = physiologicalData + " " + heartRate;
 
         b.setMode(b.normal);
         double SBP = b.getSBP();
         double DBP = b.getDBP();
         SBP = new BigDecimal(SBP).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
         DBP = new BigDecimal(DBP).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
-        System.out.println("SBP: " + SBP + " " + "DBP: " + DBP);
+        physiologicalData = physiologicalData + " " + SBP + " " + DBP;
+        //System.out.println(physiologicalData);//采集的三类数据整合成一个字符串
+        return physiologicalData;
+    }
+
+    public static void main(String args[]){
+        SensorSimulate sensor = SensorSimulate.getInstance();
+        System.out.println(sensor);
+        for(int count = 10; count > 0; --count) {
+            System.out.println(sensor.generateData());
+        }
+
+        /*
+        String[] eachData = physiologicalData.split(" ");//切分三类数据
+        for(String str : eachData){
+
+            double value = Double.parseDouble(str.toString());
+            System.out.println(value);
+        }
+        */
     }
 }
 
