@@ -1,6 +1,9 @@
 package application;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.microedition.io.Connector;
 import javax.microedition.io.StreamConnection;
@@ -48,18 +51,22 @@ public class BluetoothJavaServer {
 						mStreamConnection = mStreamConnectionNotifier.acceptAndOpen();
 						System.out.println("接受连接");
 
-						InputStream is = mStreamConnection.openInputStream();
+						//InputStream inStream = mStreamConnection.openInputStream();
+						//DataInputStream dataInSteam = new DataInputStream(inStream);
+						OutputStream outStream = mStreamConnection.openOutputStream();
+						DataOutputStream dataOutStream = new DataOutputStream(outStream);
+						
+						System.out.println("开始写数据...");
+						String outString = "37.1 68 112.3 78.6";
+						dataOutStream.writeUTF(outString);
 
-						byte[] buffer = new byte[1024];
-
-						System.out.println("开始读数据...");
+						//System.out.println("开始读数据...");
 						// 读数据。
-						while (is.read(buffer) != -1) {
-							String s = new String(buffer);
-							System.out.println(s);
-						}
+						//String inString = dataInSteam.readUTF();
+						//System.out.println(inString);
 
-						is.close();
+						outStream.close();
+						//inStream.close();
 						mStreamConnection.close();
 					}
 				} catch (Exception e) {

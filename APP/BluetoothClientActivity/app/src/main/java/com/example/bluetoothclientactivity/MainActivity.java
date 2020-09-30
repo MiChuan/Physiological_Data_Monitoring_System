@@ -1,5 +1,8 @@
 package com.example.bluetoothclientactivity;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
@@ -16,6 +19,7 @@ import android.content.IntentFilter;
 
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.TextView;
 
 /**
  * Android手机客户端通过蓝牙发送数据到部署在Windows PC电脑上。
@@ -85,20 +89,49 @@ public class MainActivity extends AppCompatActivity {
                 socket.connect();
                 Log.d(TAG, "连接建立.");
 
-                // 开始往服务器端发送数据。
-                sendDataToServer(socket);
+                //从服务端接收数据
+                String inString = receiveDataFromServer(socket);
+                Log.d(TAG, inString);
+                TextView tv = (TextView)findViewById(R.id.textView);
+                tv.setText(inString);
+
+                //String outString = inString;
+                // 开始往服务器端发送数据
+                //sendDataToServer(socket, outString);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        private void sendDataToServer(BluetoothSocket socket) {
+        private String receiveDataFromServer(BluetoothSocket socket){
+            String inString = "";
             try {
-                OutputStream os = socket.getOutputStream();
-                os.write(new String("hello,world!").getBytes());
-                os.flush();
-                os.close();
-                Log.d(TAG, "发送成功");
+                InputStream inStream = socket.getInputStream();
+                DataInputStream dataInputStream = new DataInputStream(inStream);
+
+                inString = dataInputStream.readUTF();//读蓝牙输入流数据
+
+                dataInputStream.close();
+                inStream.close();
+
+                Log.d(TAG, "接收数据");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return inString;
+        }
+
+        private void sendDataToServer(BluetoothSocket socket, String outString) {
+            try {
+                OutputStream outStream = socket.getOutputStream();
+                DataOutputStream dataOutputStream = new DataOutputStream(outStream);
+
+                Log.d(TAG, "发送数据");
+                dataOutputStream.writeUTF(outString);
+                Log.d(TAG, outString);
+
+                dataOutputStream.close();
+                outStream.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -127,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         BluetoothDevice device = getPairedDevices();
         if (device == null) {
