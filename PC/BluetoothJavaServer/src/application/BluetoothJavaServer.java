@@ -21,7 +21,7 @@ import javax.microedition.io.StreamConnectionNotifier;
  * 2，commons-io-2.6.jar
  * 下载：http://commons.apache.org/proper/commons-io/download_io.cgi
  * 
- * @author fly
+ * @author huhan
  *
  */
 public class BluetoothJavaServer {

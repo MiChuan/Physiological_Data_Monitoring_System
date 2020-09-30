@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 if (name != null)
                     Log.d(TAG, "发现设备:" + name);
 
-                if (name != null && name.equals("PHIL-PC")) {
+                if (name != null && name.equals("HUHAN")) {
                     Log.d(TAG, "发现目标设备，开始线程连接!");
 
                     // 蓝牙搜索是非常消耗系统资源开销的过程，一旦发现了目标感兴趣的设备，可以考虑关闭扫描。
@@ -84,16 +84,21 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 socket = device.createRfcommSocketToServiceRecord(UUID.fromString(MY_UUID));
+                for(int count = 10; count > 0; --count){
 
-                Log.d(TAG, "连接服务端...");
-                socket.connect();
-                Log.d(TAG, "连接建立.");
+                    Log.d(TAG, "连接服务端...");
+                    socket.connect();
+                    Log.d(TAG, "连接建立.");
 
-                //从服务端接收数据
-                String inString = receiveDataFromServer(socket);
-                Log.d(TAG, inString);
-                TextView tv = (TextView)findViewById(R.id.textView);
-                tv.setText(inString);
+                    //从服务端接收数据
+                    String inString = receiveDataFromServer(socket);
+                    String[] eachData = inString.split(" ");//切分三类数据
+                    Log.d(TAG, inString);
+                    TextView tv = (TextView)findViewById(R.id.textView);
+                    tv.setText(eachData[0] + " " + eachData[1] + " " + eachData[2] + " " + eachData[3]);
+
+                    socket.close();
+                }
 
                 //String outString = inString;
                 // 开始往服务器端发送数据
