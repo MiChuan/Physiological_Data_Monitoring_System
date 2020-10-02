@@ -19,6 +19,8 @@ import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -272,11 +274,7 @@ class SensorSimulate{
 
         
         String[] eachData = physiologicalData.split(" ");//切分三类数据
-        for(String str : eachData){
-
-            double value = Double.parseDouble(str.toString());
-            System.out.println(value);
-        }
+        
         
     }*/
 }
@@ -297,7 +295,7 @@ public class PublishClient {
     public static final String TOPIC1 = "physiology_data";
     
     //定义MQTT的ID，可以在MQTT服务配置中指定
-    private static final String clientid = "publishclient";
+    private static final String clientid = "PublishClient";
  
     private MqttClient client;
     private static MqttTopic topic11;
@@ -346,12 +344,18 @@ public class PublishClient {
     public static void main(String[] args) throws Exception {
     	System.out.println(sensor);
         PublishClient server = new PublishClient();
+        Date d = new Date();
         server.connect();
         
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-            	String content = sensor.generateData();
+            	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        		String dateNowStr = sdf.format(d);
+        		//生成消息内容
+            	String content = dateNowStr + " " + sensor.generateData();
+            	System.out.println(content);
+                
                 server.message = new MqttMessage();
                 server.message.setQos(1);  //保证消息能到达一次
                 server.message.setRetained(true);//保留消息
@@ -372,7 +376,7 @@ public class PublishClient {
         };
         Timer t = new Timer();
         long delay = 1000;
-        long intevalTime = 3000;
+        long intevalTime = 5000; //采集数据间隔5秒
         t.scheduleAtFixedRate(task, delay, intevalTime);
     }
 }
