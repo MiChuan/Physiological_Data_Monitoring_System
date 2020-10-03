@@ -252,14 +252,14 @@ class SensorSimulate{
 
         h.setMode(h.normal);
         int heartRate = h.getBPM();
-        physiologicalData = physiologicalData + " " + heartRate;
+        physiologicalData = physiologicalData + "," + heartRate;
 
         b.setMode(b.normal);
         double SBP = b.getSBP();
         double DBP = b.getDBP();
         SBP = new BigDecimal(SBP).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
         DBP = new BigDecimal(DBP).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
-        physiologicalData = physiologicalData + " " + SBP + " " + DBP;
+        physiologicalData = physiologicalData + "," + SBP + "," + DBP;
         //System.out.println(physiologicalData);//采集的三类数据整合成一个字符串
         return physiologicalData;
     }
@@ -353,7 +353,7 @@ public class PublishClient {
             	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         		String dateNowStr = sdf.format(d);
         		//生成消息内容
-            	String content = dateNowStr + " " + sensor.generateData();
+            	String content = dateNowStr + "," + sensor.generateData();
             	System.out.println(content);
                 
                 server.message = new MqttMessage();
@@ -376,7 +376,7 @@ public class PublishClient {
         };
         Timer t = new Timer();
         long delay = 1000;
-        long intevalTime = 5000; //采集数据间隔5秒
+        long intevalTime = 3000; //采集数据间隔5秒
         t.scheduleAtFixedRate(task, delay, intevalTime);
     }
 }

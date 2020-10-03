@@ -3,6 +3,10 @@ package application;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import java.net.URL;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.*;
 
 /**
  * 发布消息的回调类
@@ -22,6 +26,11 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
  *
  */
 public class PushCallback implements MqttCallback {
+    static final String DB_URL = "jdbc:mysql://47.106.172.87:3306/RFID_DESIGN?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    static final String USER = "root";
+    static final String PASSWORD = "512013";
+    static Connection connection = null;
+    static Statement statement = null;
 
     public void connectionLost(Throwable cause) {
 
@@ -38,5 +47,31 @@ public class PushCallback implements MqttCallback {
         System.out.println("接收消息主题 : " + topic);
         System.out.println("接收消息Qos : " + message.getQos());
         System.out.println("接收消息内容 : " + new String(message.getPayload()));
+
+        String physiologicalData = new String(message.getPayload());
+        String[] eachData = physiologicalData.split(",");//切分数据
+        try {
+            //1--加载驱动
+            Class.forName("com.mysql.jdbc.Driver");
+            //2--建立数据库连接
+            connection = DriverManager.getConnection(DB_URL,USER,PASSWORD);
+            //3--使用Connection 对象创建Statement，为传递sql语句做准备
+            statement = connection.createStatement();
+            //4--通过Statement对象传递sql语句
+            String sql = "INSERT INTO temperature_data(savetime,temperature) VALUE("
+                            + "'"+eachData[0]+"',"+eachData[1]+")";
+            statement.executeQuery(sql);
+            sql = "INSERT INTO heartrate_data(savetime,heartrate) VALUE(" + "'"+eachData[0]+"',"+eachData[2]+")";
+            statement.executeQuery(sql);
+            sql = "INSERT INTO bloodpressure_data(savetime,SBP,DBP) VALUE("
+                    + "'"+eachData[0]+"',"+eachData[3]+","+eachData[4]+")";
+            statement.executeQuery(sql);
+            //5--关闭所有连接 必须从后面往前面关
+            statement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //for(String str : eachData) System.out.println(str);
     }
 }
