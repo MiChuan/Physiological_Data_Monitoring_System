@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/信息分析.png</file>
+        <file>images/help.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>566</width>
+    <height>208</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>基于MQTT的生理数据监测系统</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="pic.qrc">
+    <normaloff>:/new/prefix1/images/信息分析.png</normaloff>:/new/prefix1/images/信息分析.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QWidget" name="horizontalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>541</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="pushButton_3">
+       <property name="statusTip">
+        <string>绘制一周内数据曲线</string>
+       </property>
+       <property name="text">
+        <string>数据曲线</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="statusTip">
+        <string>根据一周内生理数据分析身体状况</string>
+       </property>
+       <property name="text">
+        <string>数据分析</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>566</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>帮助</string>
+    </property>
+    <addaction name="about"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="about">
+   <property name="icon">
+    <iconset resource="pic.qrc">
+     <normaloff>:/new/prefix1/images/help.png</normaloff>:/new/prefix1/images/help.png</iconset>
+   </property>
+   <property name="text">
+    <string>关于</string>
+   </property>
+   <property name="statusTip">
+    <string>关于系统的信息</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="pic.qrc"/>
+ </resources>
+ <connections/>
+</ui>
