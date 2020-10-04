@@ -13,6 +13,7 @@ import org.eclipse.paho.client.mqttv3.MqttTopic;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 import application.PushCallback;//回调类
+import javafx.scene.chart.PieChart.Data;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -344,12 +345,12 @@ public class PublishClient {
     public static void main(String[] args) throws Exception {
     	System.out.println(sensor);
         PublishClient server = new PublishClient();
-        Date d = new Date();
         server.connect();
         
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
+            	Date d = new Date();
             	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         		String dateNowStr = sdf.format(d);
         		//生成消息内容
@@ -359,6 +360,7 @@ public class PublishClient {
                 server.message = new MqttMessage();
                 server.message.setQos(1);  //保证消息能到达一次
                 server.message.setRetained(true);//保留消息
+                //server.message.setRetained(false);//保留消息
                 server.message.setPayload(content.getBytes());//消息内容
                 try{
                     //publish(server.message);
@@ -376,7 +378,7 @@ public class PublishClient {
         };
         Timer t = new Timer();
         long delay = 1000;
-        long intevalTime = 3000; //采集数据间隔5秒
+        long intevalTime = 5000; //采集数据间隔5秒
         t.scheduleAtFixedRate(task, delay, intevalTime);
     }
 }
