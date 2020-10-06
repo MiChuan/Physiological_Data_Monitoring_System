@@ -237,6 +237,7 @@ Makefile: ../AnalyzeData/AnalyzeData.pro ../../../../Qt-5.10.0/5.10.0/mingw53_32
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/mkspecs/features/lex.prf \
 		../AnalyzeData/AnalyzeData.pro \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/qtmaind.prl \
+		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Charts.prl \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Widgets.prl \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Gui.prl \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Sql.prl \
@@ -418,6 +419,7 @@ Makefile: ../AnalyzeData/AnalyzeData.pro ../../../../Qt-5.10.0/5.10.0/mingw53_32
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/mkspecs/features/lex.prf:
 ../AnalyzeData/AnalyzeData.pro:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/qtmaind.prl:
+../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Charts.prl:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Widgets.prl:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Gui.prl:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Sql.prl:

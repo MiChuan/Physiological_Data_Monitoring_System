@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setFixedSize(this->width(), this->height()); //禁止拖动窗口
     this->setWindowFlags(windowFlags()&~Qt::WindowMaximizeButtonHint); // 禁止最大化按钮
     ui->logout->setDisabled(true);//未登陆禁用退出功能
+    ui->dataAnalyze->setDisabled(true);
+    ui->draw->setDisabled(true);
     ui->stackedWidget->setCurrentIndex(0);
 
     this->IsLogin = false;
@@ -32,7 +34,10 @@ void MainWindow::addWidgets()
 {
     Welcome *welcome = new Welcome(this);
     ui->stackedWidget->addWidget(welcome);//0
-
+    Draw *draw = new Draw(this);
+    ui->stackedWidget->addWidget(draw);//1
+    Analyze *analyze = new Analyze(this);
+    ui->stackedWidget->addWidget(analyze);//2
 }
 
 /**
@@ -45,6 +50,8 @@ void MainWindow::handConnect()
     connect(ui->login,SIGNAL(triggered(bool)),this,SLOT(LoginSys()));
     connect(ui->logout,SIGNAL(triggered(bool)),this,SLOT(ExitSys()));
     connect(ui->mainpage,SIGNAL(triggered(bool)),this,SLOT(viewMainPage()));
+    connect(ui->draw,SIGNAL(triggered(bool)),this,SLOT(drawLine()));
+    connect(ui->dataAnalyze,SIGNAL(triggered(bool)),this,SLOT(analyzeData()));
 }
 
 //窗口关闭响应事件
@@ -105,6 +112,8 @@ void MainWindow::LoginSys()
         ui->statusBar->showMessage(tr("登录成功"));
         ui->login->setDisabled(true);
         ui->logout->setEnabled(true);
+        ui->dataAnalyze->setEnabled(true);
+        ui->draw->setEnabled(true);
     }
     else
     {
@@ -122,6 +131,8 @@ void MainWindow::ExitSys()
     this->IsLogin = false;
     ui->login->setEnabled(true);
     ui->logout->setDisabled(true);
+    ui->dataAnalyze->setDisabled(true);
+    ui->draw->setDisabled(true);
     ui->statusBar->showMessage(tr("退出登录"));
     ui->stackedWidget->setCurrentIndex(0);
 }
@@ -133,5 +144,25 @@ void MainWindow::ExitSys()
 void MainWindow::viewMainPage()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    ui->statusBar->showMessage("返回到主页");
+    ui->statusBar->showMessage("返回主页");
+}
+
+/**
+ * @brief MainWindow::drawLine
+ * 显示绘制曲线页面
+ */
+void MainWindow::drawLine()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+    ui->statusBar->showMessage("绘制曲线");
+}
+
+/**
+ * @brief MainWindow::analyzeData
+ * 显示分析数据页面
+ */
+void MainWindow::analyzeData()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+    ui->statusBar->showMessage("分析数据");
 }

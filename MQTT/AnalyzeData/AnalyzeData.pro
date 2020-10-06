@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT += sql
+QT+= charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -29,19 +30,25 @@ SOURCES += \
         mainwindow.cpp \
     pages/welcome.cpp \
     tools/dbhelper.cpp \
-    pages/login.cpp
+    pages/login.cpp \
+    pages/draw.cpp \
+    pages/analyze.cpp
 
 HEADERS += \
         mainwindow.h \
     pages/welcome.h \
     pages/pages.h \
     tools/dbhelper.h \
-    pages/login.h
+    pages/login.h \
+    pages/draw.h \
+    pages/analyze.h
 
 FORMS += \
         mainwindow.ui \
     pages/welcome.ui \
-    pages/login.ui
+    pages/login.ui \
+    pages/draw.ui \
+    pages/analyze.ui
 
 RESOURCES += \
     pic.qrc

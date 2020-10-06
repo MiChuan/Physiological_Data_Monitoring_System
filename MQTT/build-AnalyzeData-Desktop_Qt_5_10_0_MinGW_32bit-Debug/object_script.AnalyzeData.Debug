@@ -1,0 +1,15 @@
+INPUT(
+./debug/main.o
+./debug/mainwindow.o
+./debug/welcome.o
+./debug/dbhelper.o
+./debug/login.o
+./debug/draw.o
+./debug/analyze.o
+./debug/qrc_pic.o
+./debug/moc_mainwindow.o
+./debug/moc_welcome.o
+./debug/moc_login.o
+./debug/moc_draw.o
+./debug/moc_analyze.o
+);

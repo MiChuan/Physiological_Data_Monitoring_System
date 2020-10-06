@@ -29,6 +29,8 @@ private slots:
     void LoginSys(); //登陆
     void ExitSys(); //退出
     void viewMainPage(); //显示主页
+    void drawLine(); //绘制曲线
+    void analyzeData(); //分析生理数据
 
 signals:
     void sendAction(QAction *action);

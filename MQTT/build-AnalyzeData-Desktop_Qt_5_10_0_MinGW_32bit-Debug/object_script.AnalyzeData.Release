@@ -1,0 +1,15 @@
+INPUT(
+./release/main.o
+./release/mainwindow.o
+./release/welcome.o
+./release/dbhelper.o
+./release/login.o
+./release/draw.o
+./release/analyze.o
+./release/qrc_pic.o
+./release/moc_mainwindow.o
+./release/moc_welcome.o
+./release/moc_login.o
+./release/moc_draw.o
+./release/moc_analyze.o
+);
