@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>566</width>
-    <height>208</height>
+    <width>722</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,37 +18,24 @@
     <normaloff>:/new/prefix1/images/信息分析.png</normaloff>:/new/prefix1/images/信息分析.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="horizontalLayoutWidget">
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>541</width>
-      <height>141</height>
+      <x>0</x>
+      <y>4</y>
+      <width>721</width>
+      <height>301</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="statusTip">
-        <string>绘制一周内数据曲线</string>
-       </property>
-       <property name="text">
-        <string>数据曲线</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="statusTip">
-        <string>根据一周内生理数据分析身体状况</string>
-       </property>
-       <property name="text">
-        <string>数据分析</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="currentIndex">
+     <number>-1</number>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -56,17 +43,34 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>566</width>
+     <width>722</width>
      <height>26</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="help">
     <property name="title">
      <string>帮助</string>
     </property>
     <addaction name="about"/>
    </widget>
+   <widget class="QMenu" name="setting">
+    <property name="title">
+     <string>系统设置</string>
+    </property>
+    <addaction name="login"/>
+    <addaction name="logout"/>
+    <addaction name="mainpage"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>系统功能</string>
+    </property>
+    <addaction name="dataAnalyze"/>
+    <addaction name="draw"/>
+   </widget>
+   <addaction name="setting"/>
    <addaction name="menu"/>
+   <addaction name="help"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="about">
@@ -79,6 +83,66 @@
    </property>
    <property name="statusTip">
     <string>关于系统的信息</string>
+   </property>
+  </action>
+  <action name="login">
+   <property name="icon">
+    <iconset resource="pic.qrc">
+     <normaloff>:/new/prefix1/images/login.png</normaloff>:/new/prefix1/images/login.png</iconset>
+   </property>
+   <property name="text">
+    <string>登录</string>
+   </property>
+   <property name="statusTip">
+    <string>登录生理数据监测系统</string>
+   </property>
+  </action>
+  <action name="logout">
+   <property name="icon">
+    <iconset resource="pic.qrc">
+     <normaloff>:/new/prefix1/images/logout.png</normaloff>:/new/prefix1/images/logout.png</iconset>
+   </property>
+   <property name="text">
+    <string>退出</string>
+   </property>
+   <property name="statusTip">
+    <string>退出生理数据监测系统</string>
+   </property>
+  </action>
+  <action name="dataAnalyze">
+   <property name="icon">
+    <iconset resource="pic.qrc">
+     <normaloff>:/new/prefix1/images/dataanalyze.png</normaloff>:/new/prefix1/images/dataanalyze.png</iconset>
+   </property>
+   <property name="text">
+    <string>数据分析</string>
+   </property>
+   <property name="statusTip">
+    <string>根据生理数据分析健康状况</string>
+   </property>
+  </action>
+  <action name="draw">
+   <property name="icon">
+    <iconset resource="pic.qrc">
+     <normaloff>:/new/prefix1/images/draw.png</normaloff>:/new/prefix1/images/draw.png</iconset>
+   </property>
+   <property name="text">
+    <string>曲线绘制</string>
+   </property>
+   <property name="statusTip">
+    <string>绘制生理数据曲线</string>
+   </property>
+  </action>
+  <action name="mainpage">
+   <property name="icon">
+    <iconset resource="pic.qrc">
+     <normaloff>:/new/prefix1/images/main.png</normaloff>:/new/prefix1/images/main.png</iconset>
+   </property>
+   <property name="text">
+    <string>显示主页</string>
+   </property>
+   <property name="statusTip">
+    <string>显示系统主页</string>
    </property>
   </action>
  </widget>

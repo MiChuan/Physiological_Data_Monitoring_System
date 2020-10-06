@@ -1,15 +1,15 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-10-04T21:30:16
+# Project created by QtCreator 2020-10-05T20:20:04
 #
 #-------------------------------------------------
 
 QT       += core gui
-QT += sql
+QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = AnalyzeData
+TARGET = TestMySQL
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -27,21 +27,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    pages/welcome.cpp \
-    tools/dbhelper.cpp \
-    pages/login.cpp
+    dbhelper.cpp
 
 HEADERS += \
         mainwindow.h \
-    pages/welcome.h \
-    pages/pages.h \
-    tools/dbhelper.h \
-    pages/login.h
+    dbhelper.h
 
 FORMS += \
-        mainwindow.ui \
-    pages/welcome.ui \
-    pages/login.ui
-
-RESOURCES += \
-    pic.qrc
+        mainwindow.ui

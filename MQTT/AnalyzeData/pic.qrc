@@ -2,5 +2,11 @@
     <qresource prefix="/new/prefix1">
         <file>images/信息分析.png</file>
         <file>images/help.png</file>
+        <file>images/login.png</file>
+        <file>images/logout.png</file>
+        <file>images/生理数据监测.jpeg</file>
+        <file>images/dataanalyze.png</file>
+        <file>images/draw.png</file>
+        <file>images/main.png</file>
     </qresource>
 </RCC>
