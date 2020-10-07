@@ -6,6 +6,8 @@ INPUT(
 ./debug/login.o
 ./debug/draw.o
 ./debug/analyze.o
+./debug/chart.o
+./debug/chartview.o
 ./debug/qrc_pic.o
 ./debug/moc_mainwindow.o
 ./debug/moc_welcome.o

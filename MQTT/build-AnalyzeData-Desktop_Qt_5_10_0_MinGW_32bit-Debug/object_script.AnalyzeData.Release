@@ -6,6 +6,8 @@ INPUT(
 ./release/login.o
 ./release/draw.o
 ./release/analyze.o
+./release/chart.o
+./release/chartview.o
 ./release/qrc_pic.o
 ./release/moc_mainwindow.o
 ./release/moc_welcome.o

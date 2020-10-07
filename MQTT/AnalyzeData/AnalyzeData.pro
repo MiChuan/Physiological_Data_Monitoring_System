@@ -32,7 +32,10 @@ SOURCES += \
     tools/dbhelper.cpp \
     pages/login.cpp \
     pages/draw.cpp \
-    pages/analyze.cpp
+    pages/analyze.cpp \
+    pages/chart.cpp \
+    pages/chartview.cpp \
+    pages/callout.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,7 +44,10 @@ HEADERS += \
     tools/dbhelper.h \
     pages/login.h \
     pages/draw.h \
-    pages/analyze.h
+    pages/analyze.h \
+    pages/chart.h \
+    pages/chartview.h \
+    pages/callout.h
 
 FORMS += \
         mainwindow.ui \
