@@ -34,8 +34,7 @@ SOURCES += \
     pages/draw.cpp \
     pages/analyze.cpp \
     pages/chart.cpp \
-    pages/chartview.cpp \
-    pages/callout.cpp
+    pages/chartview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -46,8 +45,7 @@ HEADERS += \
     pages/draw.h \
     pages/analyze.h \
     pages/chart.h \
-    pages/chartview.h \
-    pages/callout.h
+    pages/chartview.h
 
 FORMS += \
         mainwindow.ui \

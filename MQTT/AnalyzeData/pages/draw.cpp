@@ -6,6 +6,7 @@ Draw::Draw(QWidget *parent) :
     ui(new Ui::Draw)
 {
     ui->setupUi(this);
+
 }
 
 Draw::~Draw()
@@ -21,23 +22,45 @@ void Draw::on_temperature_btn_clicked()
 {
     QSplineSeries *series = new QSplineSeries();//创建曲线系列
     series->setName("spline");
-    series->append(0, 36.5);//添加点
-    series->append(2, 36.6);
-    series->append(3, 36.8);
-    series->append(7, 36.8);
-    series->append(10, 36.5);
-    *series << QPointF(11, 36.7) << QPointF(13, 36.8) <<
-               QPointF(17, 36.6) << QPointF(18, 36.5) ;
+    QDateTime xValue;//添加点
+    xValue.setDate(QDate::fromString("2012-01-18","yyyy-MM-dd"));
+    //xValue.setDate(QDate(2012, 1 , 18));
+    xValue.setTime(QTime::fromString("09:21:15","hh:mm:ss"));
+    //xValue.setTime(QTime(9, 34));
+    qreal yValue = 36.5;
+    series->append(xValue.toMSecsSinceEpoch(), yValue);
+
+    xValue.setDate(QDate(2013, 5 , 11));
+    xValue.setTime(QTime(23, 14));
+    yValue = 37.1;
+    series->append(xValue.toMSecsSinceEpoch(), yValue);
+
+    xValue.setDate(QDate(2013, 9 , 12));
+    xValue.setTime(QTime(14, 14));
+    yValue = 36.8;
+    series->append(xValue.toMSecsSinceEpoch(), yValue);
 
     Chart *chart = new Chart();//创建图表对象
     chart->legend()->hide();//隐藏图例
     chart->setAnimationOptions(QChart::SeriesAnimations);//设置动画效果
     chart->addSeries(series);//添加系列到图表
     chart->setTitle("体温表");
-    chart->createDefaultAxes();//创建默认坐标轴
-    chart->axes(Qt::Vertical).first()->setRange(0, 42);//设置值范围
-    chart->axes(Qt::Vertical).first()->setTitleText("体温/℃");//设置Y轴标题
-    chart->axes(Qt::Horizontal).first()->setTitleText("日期时间");//设置X轴标题
+
+    //chart->createDefaultAxes();//创建默认坐标轴
+    QDateTimeAxis *axisX = new QDateTimeAxis;//创建日期时间坐标轴
+    axisX->setTickCount(10);//刻度数
+    axisX->setFormat("yyyy-MM-dd hh:mm:ss");
+    axisX->setTitleText("Date");
+    chart->addAxis(axisX, Qt::AlignBottom);//底部
+    series->attachAxis(axisX);
+
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setLabelFormat("%.1f");//输入浮点型数据
+    axisY->setTitleText("体温/℃");
+    chart->addAxis(axisY, Qt::AlignLeft);//左边
+    series->attachAxis(axisY);
+
+    chart->axes(Qt::Vertical).first()->setRange(36, 42);//设置值范围
 
     ChartView *chartView = new ChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);//设置抗锯齿

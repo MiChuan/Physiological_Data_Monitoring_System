@@ -1621,140 +1621,7 @@ ui_login.h: ../AnalyzeData/pages/login.ui \
 	'F:\Qt-5.10.0\5.10.0\mingw53_32\bin\uic.exe' ../AnalyzeData/pages/login.ui -o ui_login.h
 
 ui_draw.h: ../AnalyzeData/pages/draw.ui \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/bin/uic.exe \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/qchartview.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/QAbstractAxis \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/qabstractaxis.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/QChartGlobal \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/qchartglobal.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/QtGlobal \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qglobal.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qconfig.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qtcore-config.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qsystemdetection.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qprocessordetection.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qcompilerdetection.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qtypeinfo.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qsysinfo.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qlogging.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qflags.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qatomic.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qbasicatomic.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qatomic_bootstrap.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qgenericatomic.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qatomic_cxx11.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qatomic_msvc.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qglobalstatic.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qmutex.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qnumeric.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qversiontagging.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/QPen \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpen.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qtguiglobal.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qtgui-config.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qcolor.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qrgb.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qnamespace.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstringlist.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qlist.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qalgorithms.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qiterator.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qrefcount.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qarraydata.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qhashfunctions.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstring.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qchar.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qbytearray.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstringliteral.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstringalgorithms.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstringview.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstringbuilder.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qpair.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qbytearraylist.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qregexp.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qstringmatcher.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qrgba64.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qbrush.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qpoint.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qvector.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qscopedpointer.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qmatrix.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpolygon.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qrect.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qmargins.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qsize.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qregion.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qwindowdefs.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qobjectdefs.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qobjectdefs_impl.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qwindowdefs_win.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qdatastream.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qiodevice.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qobject.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qcoreevent.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qmetatype.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qvarlengtharray.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qcontainerfwd.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qobject_impl.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qline.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qtransform.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpainterpath.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qimage.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpaintdevice.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpixelformat.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpixmap.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qsharedpointer.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qshareddata.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qhash.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/QFont \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qfont.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/QVariant \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qvariant.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qmap.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qdebug.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qtextstream.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qlocale.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qset.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qcontiguouscache.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/QAbstractSeries \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/qabstractseries.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/QObject \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/QChart \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/qchart.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/QLegend \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCharts/qlegend.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QGraphicsWidget \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qgraphicswidget.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qtwidgets-config.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qgraphicslayoutitem.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qsizepolicy.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qevent.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qkeysequence.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qurl.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qurlquery.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qfile.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/qfiledevice.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qvector2d.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qtouchdevice.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qgraphicsitem.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpalette.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/QBrush \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtCore/QMargins \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QGraphicsView \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qgraphicsview.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qpainter.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qtextoption.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qfontinfo.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qfontmetrics.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qscrollarea.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qframe.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qwidget.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtGui/qcursor.h \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/qgraphicsscene.h
+		../../../../Qt-5.10.0/5.10.0/mingw53_32/bin/uic.exe
 	'F:\Qt-5.10.0\5.10.0\mingw53_32\bin\uic.exe' ../AnalyzeData/pages/draw.ui -o ui_draw.h
 
 ui_analyze.h: ../AnalyzeData/pages/analyze.ui \
@@ -3888,8 +3755,10 @@ debug/draw.o: ../AnalyzeData/pages/draw.cpp ../AnalyzeData/pages/draw.h \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QDateTimeEdit \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QHBoxLayout \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QHeaderView \
+		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QLCDNumber \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QLabel \
-		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QPushButton
+		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QPushButton \
+		../../../../Qt-5.10.0/5.10.0/mingw53_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug/draw.o ../AnalyzeData/pages/draw.cpp
 
 debug/analyze.o: ../AnalyzeData/pages/analyze.cpp ../AnalyzeData/pages/analyze.h \
