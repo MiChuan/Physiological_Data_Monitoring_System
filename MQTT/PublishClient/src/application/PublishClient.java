@@ -98,8 +98,8 @@ class HeartRateSensor {
     public final int quickRate = 1;
     public final int slowRate = -1;
     private final double slowH = 2;//30~60过慢, 60~100正常, 100~160过快
-    private final double quickH = 0.375;
-    private final double lowH = 0.87;
+    private final double quickH = 0.33;
+    private final double lowH = 1;
     private final double highH = 0.65;
 
     /**
@@ -156,7 +156,7 @@ class BloodPressureSensor {
     private final double lowSBP = 13.4;
     private final double highSBP = 17.3;
     private final double highPressureSBP = 25;
-    private final double lowDBP = 8.7;
+    private final double lowDBP = 8;
     private final double highDBP = 10.7;
     private final double highPressureDBP = 20;
 
@@ -188,8 +188,8 @@ class BloodPressureSensor {
             SBP = ra.nextDouble() * (highSBP - lowSBP) + lowSBP;//正常
             DBP = ra.nextDouble() * (highDBP - lowDBP) + lowDBP;
         } else {
-            SBP = ra.nextDouble() * (highPressureSBP - lowSBP) + lowSBP;//高收缩压
-            DBP = ra.nextDouble() * (highPressureDBP - lowDBP) + lowDBP;//高舒张压
+            SBP = ra.nextDouble() * (highPressureSBP - highSBP) + highSBP;//高收缩压
+            DBP = ra.nextDouble() * (highPressureDBP - highDBP) + highDBP;//高舒张压
         }
     }
 
@@ -246,16 +246,20 @@ class SensorSimulate{
         String physiologicalData  = "";
 
         t.setMode(t.normal);
+        //t.setMode(t.feverT);
         double temperature = t.getTemperature();
         int precimal = 1;
         temperature = new BigDecimal(temperature).setScale(precimal, ROUND_HALF_DOWN).doubleValue();
         physiologicalData += temperature;
 
         h.setMode(h.normal);
+        //h.setMode(h.slowRate);
+        //h.setMode(h.quickRate);
         int heartRate = h.getBPM();
         physiologicalData = physiologicalData + "," + heartRate;
 
-        b.setMode(b.normal);
+        //b.setMode(b.normal);
+        b.setMode(b.highBloodPressure);
         double SBP = b.getSBP();
         double DBP = b.getDBP();
         SBP = new BigDecimal(SBP).setScale(precimal, ROUND_HALF_DOWN).doubleValue();

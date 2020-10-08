@@ -24,10 +24,10 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QTextBrowser" name="textBrowser"/>
+     <widget class="QTextBrowser" name="analyzeResult"/>
     </item>
     <item>
-     <widget class="QTableView" name="tableView"/>
+     <widget class="QTableView" name="viewData"/>
     </item>
    </layout>
   </widget>
@@ -49,21 +49,21 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="temp_btn">
       <property name="text">
        <string>查看体温数据</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="heart_btn">
       <property name="text">
        <string>查看心率数据</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="blood_btn">
       <property name="text">
        <string>查看血压数据</string>
       </property>

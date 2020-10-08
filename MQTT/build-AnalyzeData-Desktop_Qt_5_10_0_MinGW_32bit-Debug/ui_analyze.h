@@ -27,14 +27,14 @@ class Ui_Analyze
 public:
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
-    QTextBrowser *textBrowser;
-    QTableView *tableView;
+    QTextBrowser *analyzeResult;
+    QTableView *viewData;
     QWidget *horizontalLayoutWidget_2;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *analyze_btn;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
+    QPushButton *temp_btn;
+    QPushButton *heart_btn;
+    QPushButton *blood_btn;
 
     void setupUi(QWidget *Analyze)
     {
@@ -47,15 +47,15 @@ public:
         horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        textBrowser = new QTextBrowser(horizontalLayoutWidget);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
+        analyzeResult = new QTextBrowser(horizontalLayoutWidget);
+        analyzeResult->setObjectName(QStringLiteral("analyzeResult"));
 
-        horizontalLayout->addWidget(textBrowser);
+        horizontalLayout->addWidget(analyzeResult);
 
-        tableView = new QTableView(horizontalLayoutWidget);
-        tableView->setObjectName(QStringLiteral("tableView"));
+        viewData = new QTableView(horizontalLayoutWidget);
+        viewData->setObjectName(QStringLiteral("viewData"));
 
-        horizontalLayout->addWidget(tableView);
+        horizontalLayout->addWidget(viewData);
 
         horizontalLayoutWidget_2 = new QWidget(Analyze);
         horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
@@ -68,20 +68,20 @@ public:
 
         horizontalLayout_2->addWidget(analyze_btn);
 
-        pushButton = new QPushButton(horizontalLayoutWidget_2);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        temp_btn = new QPushButton(horizontalLayoutWidget_2);
+        temp_btn->setObjectName(QStringLiteral("temp_btn"));
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(temp_btn);
 
-        pushButton_2 = new QPushButton(horizontalLayoutWidget_2);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        heart_btn = new QPushButton(horizontalLayoutWidget_2);
+        heart_btn->setObjectName(QStringLiteral("heart_btn"));
 
-        horizontalLayout_2->addWidget(pushButton_2);
+        horizontalLayout_2->addWidget(heart_btn);
 
-        pushButton_3 = new QPushButton(horizontalLayoutWidget_2);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
+        blood_btn = new QPushButton(horizontalLayoutWidget_2);
+        blood_btn->setObjectName(QStringLiteral("blood_btn"));
 
-        horizontalLayout_2->addWidget(pushButton_3);
+        horizontalLayout_2->addWidget(blood_btn);
 
 
         retranslateUi(Analyze);
@@ -93,9 +93,9 @@ public:
     {
         Analyze->setWindowTitle(QApplication::translate("Analyze", "Form", nullptr));
         analyze_btn->setText(QApplication::translate("Analyze", "\345\210\206\346\236\220\346\225\260\346\215\256", nullptr));
-        pushButton->setText(QApplication::translate("Analyze", "\346\237\245\347\234\213\344\275\223\346\270\251\346\225\260\346\215\256", nullptr));
-        pushButton_2->setText(QApplication::translate("Analyze", "\346\237\245\347\234\213\345\277\203\347\216\207\346\225\260\346\215\256", nullptr));
-        pushButton_3->setText(QApplication::translate("Analyze", "\346\237\245\347\234\213\350\241\200\345\216\213\346\225\260\346\215\256", nullptr));
+        temp_btn->setText(QApplication::translate("Analyze", "\346\237\245\347\234\213\344\275\223\346\270\251\346\225\260\346\215\256", nullptr));
+        heart_btn->setText(QApplication::translate("Analyze", "\346\237\245\347\234\213\345\277\203\347\216\207\346\225\260\346\215\256", nullptr));
+        blood_btn->setText(QApplication::translate("Analyze", "\346\237\245\347\234\213\350\241\200\345\216\213\346\225\260\346\215\256", nullptr));
     } // retranslateUi
 
 };

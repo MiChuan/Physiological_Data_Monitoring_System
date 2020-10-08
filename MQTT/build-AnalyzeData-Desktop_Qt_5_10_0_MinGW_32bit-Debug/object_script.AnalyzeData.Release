@@ -8,10 +8,12 @@ INPUT(
 ./release/analyze.o
 ./release/chart.o
 ./release/chartview.o
+./release/timeeditdelegate.o
 ./release/qrc_pic.o
 ./release/moc_mainwindow.o
 ./release/moc_welcome.o
 ./release/moc_login.o
 ./release/moc_draw.o
 ./release/moc_analyze.o
+./release/moc_timeeditdelegate.o
 );

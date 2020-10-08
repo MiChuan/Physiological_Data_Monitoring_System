@@ -35,7 +35,7 @@ void Draw::on_temperature_btn_clicked()
     QString end = ui->end_time->text();
     QString sql = QString("SELECT * FROM temperature_data WHERE savetime BETWEEN '%1' AND '%2';").arg(begin).arg(end);
 
-    //SELECT * FROM temperature_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 16:27:17'
+    //SELECT * FROM temperature_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 22:09:43'
     query.prepare(sql);
     query.exec();
     while(query.next()){
@@ -115,7 +115,7 @@ void Draw::on_heartrate_btn_clicked()
     QString end = ui->end_time->text();
     QString sql = QString("SELECT * FROM heartrate_data WHERE savetime BETWEEN '%1' AND '%2';").arg(begin).arg(end);
 
-    //SELECT * FROM heartrate_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 16:27:17'
+    //SELECT * FROM heartrate_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 22:09:43'
     query.prepare(sql);
     query.exec();
     while(query.next()){
@@ -185,5 +185,89 @@ void Draw::on_heartrate_btn_clicked()
  */
 void Draw::on_blood_btn_clicked()
 {
+    QSplineSeries *series1 = new QSplineSeries();//创建曲线系列
+    QSplineSeries *series2 = new QSplineSeries();
+    series1->setPen(QPen(Qt::red,2,Qt::SolidLine));//设置颜色
+    series2->setPen(QPen(Qt::blue,2,Qt::SolidLine));
+    series1->setName("SBP");//设置曲线名
+    series2->setName("DBP");
+    QDateTime xValue;//添加点
+    qreal yValue;
 
+    DBHelper *helper = DBHelper::getInstance();
+    QSqlQuery query;
+    helper->openDatabase();//链接数据库
+
+    QString begin = ui->begin_time->text();
+    QString end = ui->end_time->text();
+    QString sql = QString("SELECT * FROM bloodpressure_data WHERE savetime BETWEEN '%1' AND '%2';").arg(begin).arg(end);
+
+    //SELECT * FROM bloodpressure_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 22:09:43'
+    query.prepare(sql);
+    query.exec();
+    while(query.next()){
+         double SBP = query.value("SBP").toDouble();
+         double DBP = query.value("DBP").toDouble();
+         QString datetimetmp = query.value("savetime").toString();
+         QStringList values = datetimetmp.split(QLatin1Char('T'));
+         QString datetime = values[0] + " " + values[1];
+         qDebug()<<datetime<<", "<<SBP<<", "<<DBP<<endl;
+         if(SBP > 140 || DBP > 90){
+             ui->status->setText("高血压");
+             ui->status->setStyleSheet("background-color: rgb(255, 255, 255);font-size:60px;color:red");
+         } else{
+             ui->status->setText("正常");
+             ui->status->setStyleSheet("background-color: rgb(255, 255, 255);font-size:60px;color:green");
+         }
+
+         xValue.setDate(QDate::fromString(values[0],"yyyy-MM-dd"));//设置日期
+         xValue.setTime(QTime::fromString(values[1],"hh:mm:ss"));//设置时间
+         yValue = SBP;
+         series1->append(xValue.toMSecsSinceEpoch(), yValue);
+         yValue = DBP;
+         series2->append(xValue.toMSecsSinceEpoch(), yValue);
+    }
+
+    helper->closeDatabase();//关闭数据库
+
+    Chart *chart = new Chart();//创建图表对象
+    //chart->legend()->hide();//隐藏图例
+    chart->setAnimationOptions(QChart::SeriesAnimations);//设置动画效果
+    chart->addSeries(series1);//添加系列到图表
+     chart->addSeries(series2);
+    chart->setTitle("血压表");
+
+    QDateTimeAxis *axisX = new QDateTimeAxis;//创建日期时间坐标轴
+    axisX->setTickCount(10);//刻度数
+    axisX->setFormat("yyyy-MM-dd hh:mm:ss");
+    axisX->setTitleText("Date");
+    chart->addAxis(axisX, Qt::AlignBottom);//底部
+    //chart->setAxisX(axisX,series1);
+    //chart->setAxisX(axisX,series2);
+    series1->attachAxis(axisX);
+    series2->attachAxis(axisX);
+
+    QValueAxis *axisY = new QValueAxis;
+    axisY->setLabelFormat("%.1f");//输入浮点型数据
+    axisY->setTitleText("血压/mmHg");
+    chart->addAxis(axisY, Qt::AlignLeft);//左边
+    //chart->setAxisY(axisY,series1);
+    //chart->setAxisY(axisY,series2);
+    series1->attachAxis(axisY);
+    series2->attachAxis(axisY);
+
+    chart->axes(Qt::Vertical).first()->setRange(60, 200);//设置值范围
+
+    ChartView *chartView = new ChartView(chart);
+    QIcon icon(":/new/prefix1/images/血压计.png");
+    chartView->setWindowIcon(icon);//设置窗口图标
+    chartView->setWindowTitle("血压曲线");//设置窗口标题
+    chartView->setRenderHint(QPainter::Antialiasing);//设置抗锯齿
+    chartView->resize(721,201);//设置大小
+    chartView->setAlignment(Qt::AlignCenter);//设置居中
+    chartView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);//设置滚动条
+    chartView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    chartView->grabGesture(Qt::PanGesture);//捕捉鼠标动作
+    chartView->grabGesture(Qt::PinchGesture);
+    chartView->show();
 }

@@ -34,7 +34,8 @@ SOURCES += \
     pages/draw.cpp \
     pages/analyze.cpp \
     pages/chart.cpp \
-    pages/chartview.cpp
+    pages/chartview.cpp \
+    pages/timeeditdelegate.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -45,7 +46,8 @@ HEADERS += \
     pages/draw.h \
     pages/analyze.h \
     pages/chart.h \
-    pages/chartview.h
+    pages/chartview.h \
+    pages/timeeditdelegate.h
 
 FORMS += \
         mainwindow.ui \
