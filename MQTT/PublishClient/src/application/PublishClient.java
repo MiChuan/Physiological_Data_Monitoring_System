@@ -42,8 +42,8 @@ class TemperatureSensor {
     private int mode;//体温范围，0代表正常，1代表发烧
     public final int normal = 0;
     public final int feverT = 38;
-    private final double feverV = 905.109; //36~37.3正常体温,高于37.3发烧
-    private final double lowV = 911.880;
+    private final double feverV = 905.109; //36.5~37.3正常体温,高于37.3发烧
+    private final double lowV = 909.797;
     private final double highV = 880.630;
 
     /**
@@ -99,8 +99,8 @@ class HeartRateSensor {
     public final int slowRate = -1;
     private final double slowH = 2;//30~60过慢, 60~100正常, 100~160过快
     private final double quickH = 0.375;
-    private final double lowH = 1;
-    private final double highH = 0.6;
+    private final double lowH = 0.87;
+    private final double highH = 0.65;
 
     /**
      * 采用饿汉式单例模式创建传感器实例
@@ -153,11 +153,11 @@ class BloodPressureSensor {
     public int mode;
     public final int normal = 0;//收缩压高于140mmHg, 舒张压高于90mmHg为高血压
     public final int highBloodPressure = 1;
-    private final double lowSBP = 12;
-    private final double highSBP = 18.6;
+    private final double lowSBP = 13.4;
+    private final double highSBP = 17.3;
     private final double highPressureSBP = 25;
-    private final double lowDBP = 8;
-    private final double highDBP = 11.9;
+    private final double lowDBP = 8.7;
+    private final double highDBP = 10.7;
     private final double highPressureDBP = 20;
 
     /**
@@ -378,7 +378,7 @@ public class PublishClient {
         };
         Timer t = new Timer();
         long delay = 1000;
-        long intevalTime = 5000; //采集数据间隔5秒
+        long intevalTime = 10000; //采集数据间隔10秒
         t.scheduleAtFixedRate(task, delay, intevalTime);
     }
 }

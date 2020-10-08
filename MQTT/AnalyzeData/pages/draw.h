@@ -12,6 +12,7 @@ QT_CHARTS_USE_NAMESPACE
 #include <QtCore/QRandomGenerator>
 #include <QtCharts/QLineSeries>
 #include <QtCharts/QValueAxis>
+#include "tools/dbhelper.h"
 
 namespace Ui {
 class Draw;

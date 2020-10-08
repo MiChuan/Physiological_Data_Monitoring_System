@@ -8,5 +8,8 @@
         <file>images/dataanalyze.png</file>
         <file>images/draw.png</file>
         <file>images/main.png</file>
+        <file>images/i-心率.png</file>
+        <file>images/体温.png</file>
+        <file>images/血压计.png</file>
     </qresource>
 </RCC>

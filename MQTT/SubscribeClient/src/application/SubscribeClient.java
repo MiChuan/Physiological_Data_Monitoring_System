@@ -64,9 +64,9 @@ public class SubscribeClient {
                 public void messageArrived(String topic, MqttMessage message) throws Exception {
                     // subscribe后得到的消息会执行到这里面
                     String physiologicalData = new String(message.getPayload());
-                    System.out.println("接收消息主题 : " + topic);
-                    //System.out.println("接收消息Qos : " + message.getQos());
-                    System.out.println("接收消息内容: " + physiologicalData);
+//                    System.out.println("接收消息主题 : " + topic);
+//                   //System.out.println("接收消息Qos : " + message.getQos());
+//                    System.out.println("接收消息内容: " + physiologicalData);
 
                     String[] eachData = physiologicalData.split(",");//切分数据
                     //sleep(3000);
@@ -83,6 +83,10 @@ public class SubscribeClient {
                         if(result.next()){
 
                         } else{
+                            System.out.println("接收消息主题 : " + topic);
+                            //System.out.println("接收消息Qos : " + message.getQos());
+                            System.out.println("接收消息内容: " + physiologicalData);
+
                             sql = "INSERT INTO temperature_data(savetime,temperature) VALUE("
                                     + "'"+eachData[0]+"',"+eachData[1]+")";
                             statement.execute(sql);

@@ -9,6 +9,7 @@
 #ifndef UI_DRAW_H
 #define UI_DRAW_H
 
+#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
@@ -16,7 +17,6 @@
 #include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLCDNumber>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
@@ -35,13 +35,13 @@ public:
     QWidget *horizontalLayoutWidget_4;
     QHBoxLayout *horizontalLayout_4;
     QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_2;
-    QDateTimeEdit *end_time;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label;
     QDateTimeEdit *begin_time;
-    QLCDNumber *lcd;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_2;
+    QDateTimeEdit *end_time;
+    QLabel *status;
 
     void setupUi(QWidget *Draw)
     {
@@ -77,22 +77,6 @@ public:
         horizontalLayout_4->setContentsMargins(0, 0, 0, 0);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        label_2 = new QLabel(horizontalLayoutWidget_4);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
-
-        horizontalLayout_3->addWidget(label_2);
-
-        end_time = new QDateTimeEdit(horizontalLayoutWidget_4);
-        end_time->setObjectName(QStringLiteral("end_time"));
-
-        horizontalLayout_3->addWidget(end_time);
-
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         label = new QLabel(horizontalLayoutWidget_4);
@@ -103,21 +87,42 @@ public:
 
         begin_time = new QDateTimeEdit(horizontalLayoutWidget_4);
         begin_time->setObjectName(QStringLiteral("begin_time"));
+        begin_time->setMaximumDate(QDate(2021, 12, 31));
+        begin_time->setMinimumDate(QDate(2019, 1, 14));
+        begin_time->setCurrentSection(QDateTimeEdit::YearSection);
 
         horizontalLayout_2->addWidget(begin_time);
 
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        label_2 = new QLabel(horizontalLayoutWidget_4);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_3->addWidget(label_2);
+
+        end_time = new QDateTimeEdit(horizontalLayoutWidget_4);
+        end_time->setObjectName(QStringLiteral("end_time"));
+        end_time->setMaximumDate(QDate(2021, 12, 31));
+        end_time->setMinimumDate(QDate(2019, 1, 1));
+        end_time->setCurrentSection(QDateTimeEdit::YearSection);
+
+        horizontalLayout_3->addWidget(end_time);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
+
 
         horizontalLayout_4->addLayout(verticalLayout);
 
-        lcd = new QLCDNumber(horizontalLayoutWidget_4);
-        lcd->setObjectName(QStringLiteral("lcd"));
-        lcd->setSmallDecimalPoint(true);
-        lcd->setProperty("value", QVariant(37.1));
+        status = new QLabel(horizontalLayoutWidget_4);
+        status->setObjectName(QStringLiteral("status"));
+        status->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_4->addWidget(lcd);
+        horizontalLayout_4->addWidget(status);
 
 
         retranslateUi(Draw);
@@ -131,8 +136,11 @@ public:
         temperature_btn->setText(QApplication::translate("Draw", "\346\230\276\347\244\272\346\270\251\345\272\246", nullptr));
         heartrate_btn->setText(QApplication::translate("Draw", "\346\230\276\347\244\272\345\277\203\347\216\207", nullptr));
         blood_btn->setText(QApplication::translate("Draw", "\346\230\276\347\244\272\350\241\200\345\216\213", nullptr));
-        label_2->setText(QApplication::translate("Draw", "\347\273\223\346\235\237\346\227\266\351\227\264", nullptr));
         label->setText(QApplication::translate("Draw", "\345\274\200\345\247\213\346\227\266\351\227\264", nullptr));
+        begin_time->setDisplayFormat(QApplication::translate("Draw", "yyyy-MM-dd HH:mm:ss", nullptr));
+        label_2->setText(QApplication::translate("Draw", "\347\273\223\346\235\237\346\227\266\351\227\264", nullptr));
+        end_time->setDisplayFormat(QApplication::translate("Draw", "yyyy-MM-dd HH:mm:ss", nullptr));
+        status->setText(QString());
     } // retranslateUi
 
 };
