@@ -9,6 +9,7 @@ INPUT(
 ./debug/chart.o
 ./debug/chartview.o
 ./debug/timeeditdelegate.o
+./debug/zsmtp.o
 ./debug/qrc_pic.o
 ./debug/moc_mainwindow.o
 ./debug/moc_welcome.o
@@ -16,4 +17,5 @@ INPUT(
 ./debug/moc_draw.o
 ./debug/moc_analyze.o
 ./debug/moc_timeeditdelegate.o
+./debug/moc_zsmtp.o
 );

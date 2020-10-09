@@ -7,6 +7,7 @@
 QT       += core gui
 QT += sql
 QT+= charts
+QT+= network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,7 +36,8 @@ SOURCES += \
     pages/analyze.cpp \
     pages/chart.cpp \
     pages/chartview.cpp \
-    pages/timeeditdelegate.cpp
+    pages/timeeditdelegate.cpp \
+    tools/zsmtp.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +49,8 @@ HEADERS += \
     pages/analyze.h \
     pages/chart.h \
     pages/chartview.h \
-    pages/timeeditdelegate.h
+    pages/timeeditdelegate.h \
+    tools/zsmtp.h
 
 FORMS += \
         mainwindow.ui \

@@ -241,6 +241,7 @@ Makefile: ../AnalyzeData/AnalyzeData.pro ../../../../Qt-5.10.0/5.10.0/mingw53_32
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Widgets.prl \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Gui.prl \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Sql.prl \
+		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Network.prl \
 		../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ../AnalyzeData/AnalyzeData.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -423,6 +424,7 @@ Makefile: ../AnalyzeData/AnalyzeData.pro ../../../../Qt-5.10.0/5.10.0/mingw53_32
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Widgets.prl:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Gui.prl:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Sql.prl:
+../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Network.prl:
 ../../../../Qt-5.10.0/5.10.0/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../AnalyzeData/AnalyzeData.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug

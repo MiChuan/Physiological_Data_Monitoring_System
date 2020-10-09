@@ -33,9 +33,9 @@ void Draw::on_temperature_btn_clicked()
 
     QString begin = ui->begin_time->text();
     QString end = ui->end_time->text();
-    QString sql = QString("SELECT * FROM temperature_data WHERE savetime BETWEEN '%1' AND '%2';").arg(begin).arg(end);
+    QString sql = QString("SELECT * FROM temperature_data WHERE savetime BETWEEN '%1' AND '%2' ORDER BY savetime ASC;").arg(begin).arg(end);
 
-    //SELECT * FROM temperature_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 22:09:43'
+    //SELECT * FROM temperature_data WHERE savetime BETWEEN '2020-10-08 22:26:17' AND '2020-10-08 22:36:32' ORDER BY savetime ASC
     query.prepare(sql);
     query.exec();
     while(query.next()){
@@ -113,9 +113,9 @@ void Draw::on_heartrate_btn_clicked()
 
     QString begin = ui->begin_time->text();
     QString end = ui->end_time->text();
-    QString sql = QString("SELECT * FROM heartrate_data WHERE savetime BETWEEN '%1' AND '%2';").arg(begin).arg(end);
+    QString sql = QString("SELECT * FROM heartrate_data WHERE savetime BETWEEN '%1' AND '%2' ORDER BY savetime ASC;").arg(begin).arg(end);
 
-    //SELECT * FROM heartrate_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 22:09:43'
+    //SELECT * FROM heartrate_data WHERE savetime BETWEEN '2020-10-08 22:26:17' AND '2020-10-08 22:36:32'
     query.prepare(sql);
     query.exec();
     while(query.next()){
@@ -200,9 +200,9 @@ void Draw::on_blood_btn_clicked()
 
     QString begin = ui->begin_time->text();
     QString end = ui->end_time->text();
-    QString sql = QString("SELECT * FROM bloodpressure_data WHERE savetime BETWEEN '%1' AND '%2';").arg(begin).arg(end);
+    QString sql = QString("SELECT * FROM bloodpressure_data WHERE savetime BETWEEN '%1' AND '%2' ORDER BY savetime ASC;").arg(begin).arg(end);
 
-    //SELECT * FROM bloodpressure_data WHERE savetime BETWEEN '2020-10-08 16:24:27' AND '2020-10-08 22:09:43'
+    //SELECT * FROM bloodpressure_data WHERE savetime BETWEEN '2020-10-08 22:26:17' AND '2020-10-08 22:36:32'
     query.prepare(sql);
     query.exec();
     while(query.next()){

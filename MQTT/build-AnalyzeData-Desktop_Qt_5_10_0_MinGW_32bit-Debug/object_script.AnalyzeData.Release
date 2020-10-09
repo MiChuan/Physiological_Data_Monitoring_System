@@ -9,6 +9,7 @@ INPUT(
 ./release/chart.o
 ./release/chartview.o
 ./release/timeeditdelegate.o
+./release/zsmtp.o
 ./release/qrc_pic.o
 ./release/moc_mainwindow.o
 ./release/moc_welcome.o
@@ -16,4 +17,5 @@ INPUT(
 ./release/moc_draw.o
 ./release/moc_analyze.o
 ./release/moc_timeeditdelegate.o
+./release/moc_zsmtp.o
 );

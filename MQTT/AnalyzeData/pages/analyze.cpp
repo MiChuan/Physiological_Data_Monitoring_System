@@ -5,7 +5,9 @@
 #include <QDebug>
 #include <QString>
 #include <QMessageBox>
+#include <QDateTime>
 #include "timeeditdelegate.h"
+#include "tools/zsmtp.h"
 
 Analyze::Analyze(QWidget *parent) :
     QWidget(parent),
@@ -26,6 +28,7 @@ void Analyze::on_analyze_btn_clicked()
 {
     DBHelper *helper = DBHelper::getInstance();
     QSqlQuery query;
+    bool SendEmailFlag = false;
     helper->openDatabase();//链接数据库
 
     QString tips = "发烧时间:\n";
@@ -33,6 +36,7 @@ void Analyze::on_analyze_btn_clicked()
     query.prepare(sql);
     query.exec();
     while(query.next()){
+        SendEmailFlag = true;
         double temperature = query.value("temperature").toDouble();
         QString datetimetmp = query.value("savetime").toString();
         QStringList values = datetimetmp.split(QLatin1Char('T'));
@@ -46,6 +50,7 @@ void Analyze::on_analyze_btn_clicked()
     query.prepare(sql);
     query.exec();
     while(query.next()){
+        SendEmailFlag = true;
         double heartrate = query.value("heartrate").toDouble();
         QString datetimetmp = query.value("savetime").toString();
         QStringList values = datetimetmp.split(QLatin1Char('T'));
@@ -58,6 +63,7 @@ void Analyze::on_analyze_btn_clicked()
     query.prepare(sql);
     query.exec();
     while(query.next()){
+        SendEmailFlag = true;
         double heartrate = query.value("heartrate").toDouble();
         QString datetimetmp = query.value("savetime").toString();
         QStringList values = datetimetmp.split(QLatin1Char('T'));
@@ -71,6 +77,7 @@ void Analyze::on_analyze_btn_clicked()
     query.prepare(sql);
     query.exec();
     while(query.next()){
+        SendEmailFlag = true;
         double SBP = query.value("SBP").toDouble();
         double DBP = query.value("DBP").toDouble();
         QString datetimetmp = query.value("savetime").toString();
@@ -83,6 +90,14 @@ void Analyze::on_analyze_btn_clicked()
     helper->closeDatabase();//关闭数据库
 
     ui->analyzeResult->setText(tips);
+    if(SendEmailFlag == true){//查询到异常数据，发送邮件
+        QDateTime current_date_time =QDateTime::currentDateTime();
+        QString current_date = current_date_time.toString("yyyy.MM.dd hh:mm:ss ddd");
+        QString Subject = current_date + " 分析异常数据";
+        ZSmtp *smtp = new ZSmtp;//创建邮件发送对象
+        connect(smtp, SIGNAL(disconnected()), smtp, SLOT(deleteLater()));	//发送完毕自行销毁
+        smtp->sendEmail("huhan_h@163.com", "GSBFRFYPMAGNJCMO", "huhan_h@163.com", Subject, tips);
+    }
 }
 
 void Analyze::on_temp_btn_clicked()
