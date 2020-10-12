@@ -37,7 +37,8 @@ SOURCES += \
     pages/chart.cpp \
     pages/chartview.cpp \
     pages/timeeditdelegate.cpp \
-    tools/zsmtp.cpp
+    tools/zsmtp.cpp \
+    tools/useraccount.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -50,7 +51,8 @@ HEADERS += \
     pages/chart.h \
     pages/chartview.h \
     pages/timeeditdelegate.h \
-    tools/zsmtp.h
+    tools/zsmtp.h \
+    tools/useraccount.h
 
 FORMS += \
         mainwindow.ui \

@@ -10,6 +10,7 @@ INPUT(
 ./debug/chartview.o
 ./debug/timeeditdelegate.o
 ./debug/zsmtp.o
+./debug/useraccount.o
 ./debug/qrc_pic.o
 ./debug/moc_mainwindow.o
 ./debug/moc_welcome.o

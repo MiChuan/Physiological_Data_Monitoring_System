@@ -55,7 +55,8 @@ void Draw::on_temperature_btn_clicked()
          xValue.setDate(QDate::fromString(values[0],"yyyy-MM-dd"));//设置日期
          xValue.setTime(QTime::fromString(values[1],"hh:mm:ss"));//设置时间
          yValue = temperature;
-         series->append(xValue.toMSecsSinceEpoch(), yValue);
+         //series->append(xValue.toMSecsSinceEpoch(), yValue);
+         series->append(xValue.toSecsSinceEpoch(), yValue);
     }
 
     helper->closeDatabase();//关闭数据库
@@ -72,13 +73,15 @@ void Draw::on_temperature_btn_clicked()
     axisX->setFormat("yyyy-MM-dd hh:mm:ss");
     axisX->setTitleText("Date");
     chart->addAxis(axisX, Qt::AlignBottom);//底部
-    series->attachAxis(axisX);
+    //series->attachAxis(axisX);
+    chart->setAxisX(axisX,series);
 
     QValueAxis *axisY = new QValueAxis;
     axisY->setLabelFormat("%.1f");//输入浮点型数据
     axisY->setTitleText("体温/℃");
     chart->addAxis(axisY, Qt::AlignLeft);//左边
-    series->attachAxis(axisY);
+    //series->attachAxis(axisY);
+    chart->setAxisY(axisY,series);
 
     chart->axes(Qt::Vertical).first()->setRange(35, 42);//设置值范围
 

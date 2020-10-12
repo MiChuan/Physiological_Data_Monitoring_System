@@ -258,8 +258,8 @@ class SensorSimulate{
         int heartRate = h.getBPM();
         physiologicalData = physiologicalData + "," + heartRate;
 
-        //b.setMode(b.normal);
-        b.setMode(b.highBloodPressure);
+        b.setMode(b.normal);
+        //b.setMode(b.highBloodPressure);
         double SBP = b.getSBP();
         double DBP = b.getDBP();
         SBP = new BigDecimal(SBP).setScale(precimal, ROUND_HALF_DOWN).doubleValue();

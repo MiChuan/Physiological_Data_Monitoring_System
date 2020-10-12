@@ -2,6 +2,7 @@
 #define LOGIN_H
 
 #include <QDialog>
+#include "tools/useraccount.h"
 
 namespace Ui {
 class login;
@@ -20,9 +21,10 @@ private slots:
 
 private:
     Ui::login *ui;
-    QString user = "huhan";
-    QString pwd = "123456";
+    QString user;
+    QString pwd;
     bool *LogStatus;
+    userAccount *account = new userAccount();
 };
 
 #endif // LOGIN_H

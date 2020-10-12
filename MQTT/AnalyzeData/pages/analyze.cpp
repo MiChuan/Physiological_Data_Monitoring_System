@@ -29,6 +29,10 @@ void Analyze::on_analyze_btn_clicked()
     DBHelper *helper = DBHelper::getInstance();
     QSqlQuery query;
     bool SendEmailFlag = false;
+    bool IsFever = false;
+    bool IsQuick = false;
+    bool IsSLow = false;
+    bool IsHigh = false;
     helper->openDatabase();//链接数据库
 
     QString tips = "发烧时间:\n";
@@ -37,6 +41,7 @@ void Analyze::on_analyze_btn_clicked()
     query.exec();
     while(query.next()){
         SendEmailFlag = true;
+        IsFever = true;
         double temperature = query.value("temperature").toDouble();
         QString datetimetmp = query.value("savetime").toString();
         QStringList values = datetimetmp.split(QLatin1Char('T'));
@@ -44,13 +49,22 @@ void Analyze::on_analyze_btn_clicked()
         qDebug()<<datetime<<", "<<temperature<<endl;
         tips = tips + " " + datetime + "\n";
     }
+    if(IsFever == true){
+        tips = tips + "健康建议:\n"
+               "1.利用湿抹布和酒精擦拭额头和手臂降温。\n"
+               "2.在医生的指导下吃一些退烧药和消炎药。\n"
+               "3.多喝热水，增加自身酶的活性，更好的杀毒。\n";
+    }
 
-    tips = tips + " " + "心率过快时间:" + "\n";
+    tips = tips + " " + "\n心率过快时间:" + "\n";
     sql = "SELECT * FROM heartrate_data WHERE heartrate > 100;";
     query.prepare(sql);
     query.exec();
+    int count = 0;
     while(query.next()){
         SendEmailFlag = true;
+        IsQuick = true;
+        ++count;
         double heartrate = query.value("heartrate").toDouble();
         QString datetimetmp = query.value("savetime").toString();
         QStringList values = datetimetmp.split(QLatin1Char('T'));
@@ -58,12 +72,19 @@ void Analyze::on_analyze_btn_clicked()
         qDebug()<<datetime<<", "<<heartrate<<endl;
         tips = tips + " " + datetime + "\n";
     }
-    tips = tips + " " + "心率过慢时间:" + "\n";
+    if(IsQuick == true){
+        if(count > 5) tips = tips + "健康建议:\n"
+                      "心率长时间过速，可能有病理性问题，请及时就医。\n";
+    }
+    tips = tips + " " + "\n心率过慢时间:" + "\n";
     sql = "SELECT * FROM heartrate_data WHERE heartrate < 60;";
     query.prepare(sql);
     query.exec();
+    count = 0;
     while(query.next()){
         SendEmailFlag = true;
+        IsSLow = true;
+        ++count;
         double heartrate = query.value("heartrate").toDouble();
         QString datetimetmp = query.value("savetime").toString();
         QStringList values = datetimetmp.split(QLatin1Char('T'));
@@ -71,13 +92,18 @@ void Analyze::on_analyze_btn_clicked()
         qDebug()<<datetime<<", "<<heartrate<<endl;
         tips = tips + datetime + "\n";
     }
+    if(IsSLow == true){
+        if(count > 5) tips = tips + "健康建议:\n"
+                      "心率长时间过慢，可能有病理性问题，请及时就医。\n";
+    }
 
-    tips = tips + " " + "高血压时间:" + "\n";
+    tips = tips + " " + "\n高血压时间:" + "\n";
     sql = "SELECT * FROM bloodpressure_data WHERE SBP > 140 OR DBP > 90;";
     query.prepare(sql);
     query.exec();
     while(query.next()){
         SendEmailFlag = true;
+        IsHigh = true;
         double SBP = query.value("SBP").toDouble();
         double DBP = query.value("DBP").toDouble();
         QString datetimetmp = query.value("savetime").toString();
@@ -85,6 +111,13 @@ void Analyze::on_analyze_btn_clicked()
         QString datetime = values[0] + " " + values[1];
         qDebug()<<datetime<<", "<<SBP<<", "<<DBP<<endl;
         tips = tips + " " + datetime + "\n";
+    }
+    if(IsHigh == true){
+        tips = tips + "健康建议:\n"
+                      "1.注意防暑降温，多食用蔬菜水果，上火了要喝凉茶降火。\n"
+                      "2.坚持进行锻炼，锻炼不要过度，选择适合自己的运动。\n"
+                      "3.注意每天适量饮食，每餐不要吃得过饱。\n"
+                      "4.限制食用盐的用量，日常还需要注意多喝点水。\n";
     }
 
     helper->closeDatabase();//关闭数据库
@@ -96,7 +129,8 @@ void Analyze::on_analyze_btn_clicked()
         QString Subject = current_date + " 分析异常数据";
         ZSmtp *smtp = new ZSmtp;//创建邮件发送对象
         connect(smtp, SIGNAL(disconnected()), smtp, SLOT(deleteLater()));	//发送完毕自行销毁
-        smtp->sendEmail("huhan_h@163.com", "GSBFRFYPMAGNJCMO", "huhan_h@163.com", Subject, tips);
+        //smtp->sendEmail("huhan_h@163.com", "GSBFRFYPMAGNJCMO", "huhan_h@163.com", Subject, tips);
+        smtp->sendEmail("huhan_h@163.com", "GSBFRFYPMAGNJCMO", "huhan_h@qq.com", Subject, tips);
     }
 }
 

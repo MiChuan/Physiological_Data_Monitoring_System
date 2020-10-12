@@ -13,6 +13,10 @@ login::login(QWidget *parent,bool *IsLogin) :
     QWidget::setTabOrder(ui->username, ui->password);
     QWidget::setTabOrder(ui->password, ui->login_btn);
     this->LogStatus = IsLogin;
+    this->user = account->readConfig("/account/first_account");
+    this->pwd = account->readConfig("/password/first_password");
+    //this->user = "huhan";
+    //this->pwd = "123456";
 }
 
 login::~login()
@@ -36,7 +40,7 @@ void login::on_login_btn_clicked()
         return;
     }
     QString inputName = ui->username->text();
-    QString inputPwd = ui->password->text();
+    QString inputPwd = account->GetMD5String(ui->password->text());
 
     /*用户存在*/
     if(inputName != this->user){

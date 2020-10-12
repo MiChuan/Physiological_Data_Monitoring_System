@@ -10,6 +10,7 @@ INPUT(
 ./release/chartview.o
 ./release/timeeditdelegate.o
 ./release/zsmtp.o
+./release/useraccount.o
 ./release/qrc_pic.o
 ./release/moc_mainwindow.o
 ./release/moc_welcome.o
