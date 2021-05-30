@@ -19,7 +19,7 @@ import static java.lang.Thread.sleep;
  * @author huhan
  */
 public class SubscribeClient {
-    public static final String HOST = "tcp://47.106.172.87:1883";
+    public static final String HOST = "tcp://121.0.0.1:1883";
     public static final String TOPIC1 = "physiology_data";
     private static final String clientid = "SubscribeClient";
     private MqttClient client;
@@ -28,7 +28,7 @@ public class SubscribeClient {
     private String passWord = "mqtt";  //非必须
     private ScheduledExecutorService scheduler;
     //数据库
-    static final String DB_URL = "jdbc:mysql://47.106.172.87:3306/RFID_DESIGN?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    static final String DB_URL = "jdbc:mysql://121.0.0.1:3306/RFID_DESIGN?useUnicode=true&characterEncoding=utf-8&useSSL=false";
     static final String USER = "root";
     static final String PASSWORD = "512013";
     static Connection connection = null;

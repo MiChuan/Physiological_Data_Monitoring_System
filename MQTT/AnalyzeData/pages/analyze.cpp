@@ -1,3 +1,8 @@
+/**
+ * Author:huhan
+ * Email:huhan_h@163.com
+ * GitHub:https://github.com/MiChuan
+ */
 #include "analyze.h"
 #include "ui_analyze.h"
 #include <QSqlQuery>
@@ -129,8 +134,8 @@ void Analyze::on_analyze_btn_clicked()
         QString Subject = current_date + " 分析异常数据";
         ZSmtp *smtp = new ZSmtp;//创建邮件发送对象
         connect(smtp, SIGNAL(disconnected()), smtp, SLOT(deleteLater()));	//发送完毕自行销毁
-        //smtp->sendEmail("huhan_h@163.com", "GSBFRFYPMAGNJCMO", "huhan_h@163.com", Subject, tips);
-        smtp->sendEmail("huhan_h@163.com", "GSBFRFYPMAGNJCMO", "huhan_h@qq.com", Subject, tips);
+        //smtp->sendEmail("huhan_h@163.com", "邮箱SMTP服务授权码", "huhan_h@163.com", Subject, tips);
+        smtp->sendEmail("huhan_h@163.com", "邮箱SMTP服务授权码", "huhan_h@qq.com", Subject, tips);
     }
 }
 

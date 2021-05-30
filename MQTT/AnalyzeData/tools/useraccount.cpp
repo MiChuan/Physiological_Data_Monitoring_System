@@ -1,3 +1,8 @@
+/**
+ * Author:huhan
+ * Email:huhan_h@163.com
+ * GitHub:https://github.com/MiChuan
+ */
 #include "useraccount.h"
 #include <QDebug>
 

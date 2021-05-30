@@ -1,3 +1,8 @@
+/**
+ * Author:huhan
+ * Email:huhan_h@163.com
+ * GitHub:https://github.com/MiChuan
+ */
 #include "dbhelper.h"
 #include <QDebug>
 #include <QApplication>
@@ -7,12 +12,12 @@ DBHelper::DBHelper()
 {
     //db = QSqlDatabase::addDatabase("QODBC");   //数据库驱动类型为MySQL Server
     db = QSqlDatabase::addDatabase("QMYSQL");   //数据库驱动类型为MySQL Server
-    db.setHostName("47.106.172.87");                        //选择主机
+    db.setHostName("121.0.0.1");                        //选择主机
     db.setPort(3306);                                   //选择端口
     db.setDatabaseName("RFID_DESIGN");
     //db.setDatabaseName("QMYSQL");                            //设置数据源名称
     db.setUserName("root");                               //登录用户
-    db.setPassword("512013");                              //密码
+    db.setPassword("147258");                              //密码
 }
 
 bool DBHelper:: openDatabase()

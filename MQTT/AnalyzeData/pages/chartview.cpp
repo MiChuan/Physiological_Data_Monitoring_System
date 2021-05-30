@@ -1,3 +1,8 @@
+/**
+ * Author:huhan
+ * Email:huhan_h@163.com
+ * GitHub:https://github.com/MiChuan
+ */
 #include "chartview.h"
 
 #include <QtGui/QMouseEvent>

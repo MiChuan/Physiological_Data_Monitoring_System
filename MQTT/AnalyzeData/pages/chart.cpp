@@ -1,3 +1,8 @@
+/**
+ * Author:huhan
+ * Email:huhan_h@163.com
+ * GitHub:https://github.com/MiChuan
+ */
 #include "chart.h"
 #include <QtWidgets/QGesture>
 #include <QtWidgets/QGraphicsScene>
